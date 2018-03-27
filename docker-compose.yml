@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+ falcon-api:
+    build: .
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - "8000:80"
+    container_name: falcon-api
+networks:
+  default:
+    external:
+      name: falcon-net
+
