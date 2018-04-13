@@ -1,2 +1,3 @@
 falcon==1.4.1
 gunicorn==19.7.1
+git+https://github.com/jneo8/neo_logger.git
