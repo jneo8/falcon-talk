@@ -20,7 +20,6 @@ class APIInfo:
 
     def on_post(self, req, resp):
         """POST Method."""
-        logger.info(req.params)
         doc = {
             "version": "1.0",
             "http_method": req.method,
