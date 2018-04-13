@@ -15,11 +15,8 @@ class AddPostParams():
         """Process_request."""
         body = req.stream.read()
         post_params = json.loads(body.decode("utf-8"))
-        logger.info(post_params)
         for k, v in post_params.items():
             req.params[k] = v
-
-        logger.debug(dir(req))
 
 
 class VersionRouting:
@@ -27,10 +24,11 @@ class VersionRouting:
 
     def process_request(self, req, resp):
         """Process_request."""
-        version = req.get_header("version")
-        req.path = f"/v{version}{req.path}"
-        if req.path[-1] == "/":
-            req.path = req.path[:-1]
+        version = req.get_header("version", None)
+        if version:
+            req.path = f"/v{version}{req.path}"
+            if req.path[-1] == "/":
+                req.path = req.path[:-1]
 
 
 api = application = falcon.API(
