@@ -1,5 +1,7 @@
 """RESTful API example."""
 
+__all__ = ["RESTfulExample"]
+
 
 class RESTfulExample:
 
